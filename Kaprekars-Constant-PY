@@ -1,0 +1,42 @@
+x = input('Enter a four-digit integer: ')
+if int(x) < 1000:
+    x = str.zfill(x, 4)
+y = (sorted(x))
+z = (sorted(x, reverse=True))
+
+sames = [1111, 2222, 3333, 4444, 5555, 6666, 7777, 8888, 9999]
+
+y = int("".join(y))
+z = int("".join(z))
+# print(y)
+# print(z)
+c = 0
+kap = x
+# checks for sames
+if int(x) in sames:
+    print(int(kap), ">", 0)
+    kap = 6174
+    print(f"{x} reaches 0 via Kaprekar's routine in {c + 1} iterations ")
+
+# runs the calculations
+while kap != 6174 and kap != 0:
+    if int(kap) < 1000:
+        print(int(kap), end=' > ')
+    else:
+        print(kap, end=' > ')
+    if y < z:
+        kap = z - y
+    else:
+        kap = y - z
+    kap = str(kap)
+    kap = str.zfill((kap), 4)
+    y = sorted(str(kap))
+    z = sorted(str(kap), reverse=True)
+    y = int("".join(y))
+    z = int("".join(z))
+    c += 1
+    kap = int(kap)
+
+if c > 1:
+    print(6174)
+    print(f"{int(x)} reaches 6174 via Kaprekar's routine in {c} iterations")
